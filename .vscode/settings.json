@@ -1,4 +1,6 @@
 {
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
-  "typescript.format.insertSpaceBeforeFunctionParenthesis": true
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "diffEditor.experimental.showMoves": false,
+  "diffEditor.hideUnchangedRegions.enabled": false
 }
