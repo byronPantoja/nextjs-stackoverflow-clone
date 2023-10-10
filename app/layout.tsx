@@ -16,12 +16,13 @@ const inter = Inter({
 const spaceGrotesk = SpaceGrotesk({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-spacerotesk',
+  variable: '--font-spaceGrotesk',
 })
 
 export const metadata: Metadata = {
   title: 'Stack Overflow Clone in Next.js 13',
-  description: 'Stack Overflow Clone in Next.js 13',
+  description:
+    'A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, algorithms, data structures, and more.',
   icons: {
     icon: '/assets/images/site-logo.svg',
   },
@@ -33,12 +34,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
-      <html lang='en'>
-        <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang='en'>
+      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+        <ClerkProvider
+          appearance={{
+            elements: {
+              formButtonPrimary: 'primary-gradient',
+              footerActionLink: 'primary-text-gradient hover:text-primary-500',
+            },
+          }}
+        >
           <ThemeProvider>{children}</ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   )
 }
