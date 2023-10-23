@@ -18,21 +18,14 @@ import { Button } from '../ui/button'
 import { QuestionsSchema } from '@/lib/validations'
 import { Badge } from '../ui/badge'
 import Image from 'next/image'
-import { useRouter, usePathname } from 'next/navigation'
 
 // TODO: Fix this
 const type: any = 'create'
 
-interface Props {
-  mongoUserId: string
-}
-
-const Question = ({ mongoUserId }: Props) => {
+const Question = () => {
   const editorRef = useRef(null)
   // Stops submitting the form multiple times
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const router = useRouter()
-  const pathname = usePathname()
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof QuestionsSchema>>({
