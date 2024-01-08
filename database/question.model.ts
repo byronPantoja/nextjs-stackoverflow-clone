@@ -1,7 +1,5 @@
-// Import everything from mongoose
 import { Schema, models, model, Document } from 'mongoose'
 
-// Define the interface for our model so we know what fields we want to store in our database
 export interface IQuestion extends Document {
   title: string
   content: string
@@ -14,7 +12,6 @@ export interface IQuestion extends Document {
   createdAt: Date
 }
 
-// Define the schema for our database
 const QuestionSchema = new Schema({
   title: { type: String, required: true },
   content: { type: String, required: true },
@@ -27,8 +24,6 @@ const QuestionSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
 })
 
-// Create our model from the schema
-const Question = models.Question || model<IQuestion>('Question', QuestionSchema)
+const Question = models.Question || model('Question', QuestionSchema)
 
-// Export our model
 export default Question

@@ -19,14 +19,19 @@ import { QuestionsSchema } from '@/lib/validations'
 import { Badge } from '../ui/badge'
 import Image from 'next/image'
 import { createQuestion } from '@/lib/actions/question.action'
+import { useRouter, usePathname } from 'next/navigation'
 
-// TODO: Fix this
 const type: any = 'create'
 
-const Question = () => {
+interface Props {
+  mongoUserId: string
+}
+
+const Question = ({ mongoUserId }: Props) => {
   const editorRef = useRef(null)
-  // Stops submitting the form multiple times
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof QuestionsSchema>>({
@@ -45,15 +50,23 @@ const Question = () => {
     try {
       // make an async call to your API -> create a question
       // contain all form data
-      await createQuestion({})
+
+      await createQuestion({
+        title: values.title,
+        content: values.explanation,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+        path: pathname,
+      })
+
       // navigate to home page
+      router.push('/')
     } catch (error) {
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  // TAGS
   const handleInputKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>,
     field: any
