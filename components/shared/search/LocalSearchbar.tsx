@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { Input } from '@/components/ui/input'
 import Image from 'next/image'
@@ -20,34 +20,32 @@ const LocalSearchbar = ({
   otherClasses,
 }: CustomInputProps) => {
   return (
-    <div
-      className={`background-light800_darkgradient flex min-h-[56px] grow items-center gap-4 rounded-[10px] px-4 ${otherClasses}`}
-    >
+    <div className={`background-light800_darkgradient flex min-h-[56px] grow items-center gap-4 rounded-[10px] px-4 ${otherClasses}`}>
       {iconPosition === 'left' && (
-        <Image
+        <Image 
           src={imgSrc}
-          alt='search icon'
+          alt="search icon"
           width={24}
           height={24}
-          className='cursor-pointer'
+          className="cursor-pointer"
         />
       )}
 
       <Input
-        type='text'
+        type="text"
         placeholder={placeholder}
-        value=''
+        value=""
         onChange={() => {}}
-        className='paragraph-regular no-focus placeholder background-light800_darkgradient border-none shadow-none outline-none'
+        className="paragraph-regular no-focus placeholder background-light800_darkgradient border-none shadow-none outline-none"
       />
 
       {iconPosition === 'right' && (
-        <Image
+        <Image 
           src={imgSrc}
-          alt='search icon'
+          alt="search icon"
           width={24}
           height={24}
-          className='cursor-pointer'
+          className="cursor-pointer"
         />
       )}
     </div>
