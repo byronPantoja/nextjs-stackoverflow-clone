@@ -32,7 +32,7 @@
     "html-react-parser": "^5.1.1",
     "lucide-react": "^0.274.0",
     "mongodb": "^6.0.0",
-    "mongoose": "^7.5.0",
+    "mongoose": "^7.6.9",
     "next": "13.4.19",
     "postcss": "8.4.29",
     "prettier": "^3.0.3",
