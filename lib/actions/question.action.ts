@@ -47,7 +47,7 @@ export async function createQuestion(params: CreateQuestionParams) {
     for (const tag of tags) {
       const existingTag = await Tag.findOneAndUpdate(
         { name: { $regex: new RegExp(`^${tag}$`, 'i') } },
-        { $setOnInsert: { name: tag }, $push: { question: question._id } },
+        { $setOnInsert: { name: tag }, $push: { questions: question._id } },
         { upsert: true, new: true }
       )
 
@@ -114,7 +114,7 @@ export async function upvoteQuestion(params: QuestionVoteParams) {
       throw new Error('Question not found')
     }
 
-    // Increment author's reputation by +10 for upvoting a question
+    // Increment author's reputation
 
     revalidatePath(path)
   } catch (error) {
@@ -150,7 +150,7 @@ export async function downvoteQuestion(params: QuestionVoteParams) {
       throw new Error('Question not found')
     }
 
-    // Increment author's reputation by +10 for upvoting a question
+    // Increment author's reputation
 
     revalidatePath(path)
   } catch (error) {
